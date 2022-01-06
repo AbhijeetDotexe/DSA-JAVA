@@ -512,6 +512,106 @@ public class ll {
     }
 
 
+    //Q12 ReOrder List
+    public void reOrderList(Node head){
+            if (head == null || head.next == null){
+                return;
+            }
+
+            Node mid = middleNode(head);
+
+            Node hs = reverseInPlace(mid);
+            Node hf = head;
+
+            //Rearrange
+            while (hf != null && hs != null){
+
+                Node temp = hf.next;
+                hf.next = hs;
+                head = temp;
+
+                temp = hs.next;
+                hs.next = hf;
+                hs = temp;
+
+
+                //Setting the value of tail to null
+                if (hf != null){
+                    hf.next = null;
+                }
+            }
+
+
+
+
+
+    }
+
+    //Q14 Reverse nodes in k groups
+    public Node reverseGroup(Node head, int k){
+            if (k <= 1 && head != null){
+                return head;
+            }
+            Node current = head;
+            Node prev = null;
+
+            while (true){
+
+                Node last = prev;
+                Node newEnd = current;
+                // Reverse between left and right
+                Node next = current.next;
+                for (int i = 0; i < k ; i++) {
+                    current.next = prev;
+                    prev = current;
+                    current = next;
+                    if (next != null){
+                        next = next.next;
+                    }
+                }
+                if (last != null){
+                    last.next = prev;
+                }else {
+                    head = prev;
+                }
+
+                newEnd.next = current;
+
+                if (current == null){
+                    break;
+                }
+                prev = newEnd;
+            }
+        return head;
+
+    }
+
+    //Q15 Rotate the linked list
+    public Node rotateRight(Node head, int k){
+            if (k<=0 || head == null || head.next == null){
+                return head;
+            }
+
+            Node last = head;
+            int length = 1;
+            while (last.next != null){
+                last = last.next;
+                length++;
+            }
+            last.next = head;
+
+            int rotation = k % length;
+            int skip = length - rotation;
+            Node newLast = head;
+            for (int i = 0; i < skip - 1 ; i++) {
+                newLast = newLast.next;
+            }
+
+            head = newLast.next;
+            newLast.next = null;
+            
+            return head;
+    }
 
 
 
@@ -541,3 +641,4 @@ public class ll {
 
 
 }
+
