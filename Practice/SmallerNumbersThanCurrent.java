@@ -1,4 +1,4 @@
-package com.abhijeet.Questions;
+
 //Leetcode question numbers smaller than the current elements in the array
 import java.util.Arrays;
 
@@ -23,3 +23,4 @@ public class SmallerNumbersThanCurrent {
         return ans;
     }
 }
+
