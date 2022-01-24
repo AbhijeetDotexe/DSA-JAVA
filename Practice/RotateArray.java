@@ -33,3 +33,13 @@ public class RotateArray {
     }
 }
 
+
+
+
+   //nums = [1,2,3,4,5,6,7], k = 3
+    //5,6,7,1,2,3,4   
+	 
+	 //logic :
+	 //7,6,5,4,3,2,1  : Reverse All start = 0  end = nums.length -1 
+	 //5,6,7,4,3,2,1  : Reverse front(first group elements) start = 0 end = K-1
+	 //5,6,7,1,2,3,4  : Reverse  end(second group elements) start = k end = nums.length -1
